@@ -11,24 +11,18 @@ background_colour = (234, 212, 252)
 white = (0, 0, 0)
 
 #wikipedia stuff
-Country = 'forks'
+Country = 'spoon'
 wiki_wiki = wiki.Wikipedia('MyProjectName', 'en')
 page_py = wiki_wiki.page(Country)
 
 #pygame stuff
 pygame.init()
-screen = pygame.display.set_mode((600,600))
+screen = pygame.display.set_mode((770,250))
 pygame.display.set_caption('A Brief Overview')
 Icon = pygame.image.load('globe.png')
-my_font = pygame.font.SysFont('arial', 24)
+my_font = pygame.font.SysFont('arial', 20)
 pygame.display.set_icon(Icon)
 screen.fill(background_colour)
-font = pygame.sysfont.SysFont('arial', 24)
-MAX_WIDTH_YOU_WOULD_LIKE = 500
-limit_pixel_width = max(MAX_WIDTH_YOU_WOULD_LIKE, 24 * 5)
-text_surface = my_font.render(page_py.summary[0:1000], True, white)
-screen.blit(text_surface, (0,0))
-pygame.display.flip()
 
 running = True
 
@@ -36,6 +30,30 @@ running = True
 filelocation = "interactive_map.html"
 
 whatOS = platform.system()
+
+def Print30Lines():
+    screen.fill(background_colour)
+    text_surface = my_font.render(page_py.summary[0:90], True, white)
+    screen.blit(text_surface, (10,0))
+    text_surface = my_font.render(page_py.summary[90:180], True, white)
+    screen.blit(text_surface, (10,30))
+    text_surface = my_font.render(page_py.summary[180:270], True, white)
+    screen.blit(text_surface, (10,60))
+    text_surface = my_font.render(page_py.summary[270:360], True, white)
+    screen.blit(text_surface, (10,90))
+    text_surface = my_font.render(page_py.summary[360:450], True, white)
+    screen.blit(text_surface, (10,120))
+    text_surface = my_font.render(page_py.summary[450:540], True, white)
+    screen.blit(text_surface, (10,150))
+    text_surface = my_font.render(page_py.summary[540:630], True, white)
+    screen.blit(text_surface, (10,180))
+    text_surface = my_font.render(page_py.summary[630:720], True, white)
+    screen.blit(text_surface, (10,210))
+    text_surface = my_font.render(page_py.summary[720:810], True, white)
+    screen.blit(text_surface, (10,240))
+    text_surface = my_font.render(page_py.summary[810:900], True, white)
+    screen.blit(text_surface, (10,270))
+    pygame.display.flip()
 
 #check if os is mac
 if whatOS == "Darwin":
@@ -87,6 +105,7 @@ if whatOS == "Darwin":
             if event.type == pygame.QUIT: 
                 running = False
         page_py = wiki_wiki.page(Country)
+        Print30Lines()
 
 #check if os is windows
 if whatOS == "Windows":
@@ -128,3 +147,4 @@ if whatOS == "Windows":
             if event.type == pygame.QUIT: 
                 running = False
         page_py = wiki_wiki.page(Country)
+        Print30Lines()
