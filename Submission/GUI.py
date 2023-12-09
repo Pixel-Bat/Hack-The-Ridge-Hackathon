@@ -5,7 +5,7 @@ import platform
 from countryinfo import CountryInfo
 import wikipediaapi as wiki
 import pygame
-import test2
+import Map
 
 #colours
 background_colour = (234, 212, 252)
@@ -18,7 +18,7 @@ page_py = wiki_wiki.page(Country)
 
 #pygame stuff
 pygame.init()
-screen = pygame.display.set_mode((770,250))
+screen = pygame.display.set_mode((770,300))
 pygame.display.set_caption('A Brief Overview')
 Icon = pygame.image.load('globe.png')
 my_font = pygame.font.SysFont('arial', 20)
@@ -84,7 +84,7 @@ if whatOS == "Darwin":
         subprocess.Popen(command, shell=True)
 
     # Create a base map centered at a specific location
-    m = folium.Map(location=[37.7749, -122.4194], zoom_start=12)
+    m = folium.Map(location=[47.7749, -705.4194], zoom_start=12)
 
     # Add a marker to the map
     folium.Marker(
