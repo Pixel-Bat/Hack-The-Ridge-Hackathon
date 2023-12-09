@@ -3,14 +3,40 @@ import os, sys, subprocess
 from pathlib import Path
 import platform
 from countryinfo import CountryInfo
+import wikipediaapi as wiki
+import pygame
 
+#colours
+background_colour = (234, 212, 252)
+
+#pygame stuff
+pygame.init()
+screen = pygame.display.set_mode((600,600))
+pygame.display.set_caption('A Brief Overview')
+Icon = pygame.image.load('globe.png')
+pygame.display.set_icon(Icon)
+screen.fill(background_colour)
+pygame.display.flip()
+
+running = True
+
+#folium stuff
 filelocation = "interactive_map.html"
-''''''
 whatOS = platform.system()
 
+#wikipedia stuff
+Country = 'forks'
+wiki_wiki = wiki.Wikipedia('MyProjectName', 'en')
+page_py = wiki_wiki.page(Country)
+
+#check if os is mac
 if whatOS == "Darwin":
 
     print("OS is Mac")
+
+    #print summary of location
+    print("Title: %s" % page_py.title)
+    print("Summary: %s" % page_py.summary[0:1000])
 
     if os.getuid() == 0:
         print("Root access Granted")
@@ -46,11 +72,22 @@ if whatOS == "Darwin":
     command = (f"open -a 'Google Chrome' {filelocation}")
     subprocess.Popen(command, shell=True)
 
-    #while True:
+    while running:
+        for event in pygame.event.get(): 
+      
+        # Check for QUIT event       
+            if event.type == pygame.QUIT: 
+                running = False
+        page_py = wiki_wiki.page(Country)
 
+#check if os is windows
 if whatOS == "Windows":
 
     print("OS is Windows")
+
+    #print summary of location
+    print("Title: %s" % page_py.title)
+    print("Summary: %s" % page_py.summary[0:1000])
 
     my_file = Path(filelocation)
     if my_file.is_file():
@@ -76,4 +113,10 @@ if whatOS == "Windows":
 
     os.system(".\interactive_map.html")
 
-    #while True:
+    while running:
+        for event in pygame.event.get(): 
+      
+        # Check for QUIT event       
+            if event.type == pygame.QUIT: 
+                running = False
+        page_py = wiki_wiki.page(Country)
