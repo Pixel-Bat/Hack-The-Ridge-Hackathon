@@ -4,6 +4,7 @@ import streamlit as st
 from geopy.geocoders import Nominatim
 
 
+
 st.set_page_config(layout="wide")
 
 def get_pos(lat, lng):
@@ -25,7 +26,13 @@ if map.get("last_clicked"):
     location = geolocator.reverse((data[0], data[1]), language='en')
 
     # Extract the country from the location details
+    
     country = location.raw.get('address', {}).get('country', 'Country not found')
+    f = open("country.txt", "w")
+    f.write(str(country))
+    f.close()
+
+
 
 
 if data is not None:

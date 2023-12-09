@@ -5,6 +5,7 @@ import platform
 from countryinfo import CountryInfo
 import wikipediaapi as wiki
 import pygame
+import test2
 
 #colours
 background_colour = (234, 212, 252)
@@ -146,5 +147,7 @@ if whatOS == "Windows":
         # Check for QUIT event       
             if event.type == pygame.QUIT: 
                 running = False
+        f = open("country.txt", "r")
+        Country = f.read()
         page_py = wiki_wiki.page(Country)
         Print30Lines()
