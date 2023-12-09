@@ -22,6 +22,7 @@ running = True
 
 #folium stuff
 filelocation = "interactive_map.html"
+
 whatOS = platform.system()
 
 #wikipedia stuff
@@ -62,7 +63,7 @@ if whatOS == "Darwin":
     # Add a marker to the map
     folium.Marker(
         location=[37.7749, -122.4194],
-        popup="San Francisco",
+        popup="San Francisco<br>ugly",
         icon=folium.Icon(color="blue"),
     ).add_to(m)
 
