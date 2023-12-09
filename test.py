@@ -139,7 +139,7 @@ if whatOS == "Windows":
         # Save the map as an HTML file
     m.save(filelocation)
 
-    os.system(".\interactive_map.html")
+    #os.system(".\interactive_map.html")
 
     while running:
         for event in pygame.event.get(): 
