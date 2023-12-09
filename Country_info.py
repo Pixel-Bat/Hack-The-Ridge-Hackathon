@@ -1,39 +1,14 @@
-from countryinfo import CountryInfo
+import wbdata
+import datetime
 
+def get_country_gdp_history(country_code, indicator="NY.GDP.MKTP.CD", start_date="1960", end_date="2020"):
+    data_date = (datetime.datetime(int(start_date), 1, 1), datetime.datetime(int(end_date), 1, 1))
+    data = wbdata.get_dataframe(indicators={indicator: "GDP (current US$)"}, country=country_code, data_date=data_date)
+    return data
 
-# Input the Name of the Country
-name=input("Enter your country: ")
+# Example: Fetching GDP history for the United States
+country_code_usa = "USA"
+gdp_data_usa = get_country_gdp_history(country_code_usa)
 
-# Passing the country name to the in-built function of the module
-country = CountryInfo(name)
-
-# Printing all the details using the Pre-defined Functions
-
-# 1) Printing the Capital of the Country
-print("Capital is: ",country.capital())
-
-# 2) Printing the Currency used in the Country
-print("Currencies is: ",country.currencies())
-
-# 3) Printing the Languages spoken in the Country
-print("Language is: ",country. languages())
-
-# 4) Printing the Borders of the Country and Function
-# returns bordering countries (ISO3) for a specified country
-print("Borders are: ",country.borders())
-
-# 5) Printing the Provinces of the Country
-print("Provinces are: ", country.provinces())
-
-# 8) Printing the Latitudes and Longitudes of the Country
-print("Capital Latitudes and Longitudes are: ", 
-						country.capital_latlng())
-
-# 9) Printing the TimeZone in the Country
-print("TimeZone: ", country.timezones())
-
-# 10) Printing the Current Population in the Country
-print("Population: ", country.population())
-
-# 11) Printing the Other Names of the Country
-print("Others names: ",country.alt_spellings())
+print(f"GDP History for {country_code_usa}:\n")
+print(gdp_data_usa.head())

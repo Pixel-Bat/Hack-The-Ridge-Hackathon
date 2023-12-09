@@ -5,7 +5,7 @@ import platform
 from countryinfo import CountryInfo
 
 filelocation = "interactive_map.html"
-''''''
+
 whatOS = platform.system()
 
 if whatOS == "Darwin":
@@ -36,7 +36,7 @@ if whatOS == "Darwin":
     # Add a marker to the map
     folium.Marker(
         location=[37.7749, -122.4194],
-        popup="San Francisco",
+        popup="San Francisco<br>ugly",
         icon=folium.Icon(color="blue"),
     ).add_to(m)
 
@@ -47,6 +47,12 @@ if whatOS == "Darwin":
     subprocess.Popen(command, shell=True)
 
     #while True:
+
+
+
+
+
+
 
 if whatOS == "Windows":
 
