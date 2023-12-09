@@ -8,14 +8,26 @@ import pygame
 
 #colours
 background_colour = (234, 212, 252)
+white = (0, 0, 0)
+
+#wikipedia stuff
+Country = 'forks'
+wiki_wiki = wiki.Wikipedia('MyProjectName', 'en')
+page_py = wiki_wiki.page(Country)
 
 #pygame stuff
 pygame.init()
 screen = pygame.display.set_mode((600,600))
 pygame.display.set_caption('A Brief Overview')
 Icon = pygame.image.load('globe.png')
+my_font = pygame.font.SysFont('arial', 24)
 pygame.display.set_icon(Icon)
 screen.fill(background_colour)
+font = pygame.sysfont.SysFont('arial', 24)
+MAX_WIDTH_YOU_WOULD_LIKE = 500
+limit_pixel_width = max(MAX_WIDTH_YOU_WOULD_LIKE, 24 * 5)
+text_surface = my_font.render(page_py.summary[0:1000], True, white)
+screen.blit(text_surface, (0,0))
 pygame.display.flip()
 
 running = True
@@ -24,11 +36,6 @@ running = True
 filelocation = "interactive_map.html"
 
 whatOS = platform.system()
-
-#wikipedia stuff
-Country = 'forks'
-wiki_wiki = wiki.Wikipedia('MyProjectName', 'en')
-page_py = wiki_wiki.page(Country)
 
 #check if os is mac
 if whatOS == "Darwin":
