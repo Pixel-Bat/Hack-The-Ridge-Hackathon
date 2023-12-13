@@ -12,7 +12,7 @@ background_colour = (234, 212, 252)
 white = (0, 0, 0)
 
 #wikipedia stuff
-Country = 'spoon'
+Country = 'ontarian'
 wiki_wiki = wiki.Wikipedia('MyProjectName', 'en')
 page_py = wiki_wiki.page(Country)
 

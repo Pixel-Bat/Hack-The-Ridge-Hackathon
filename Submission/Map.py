@@ -3,6 +3,7 @@ from streamlit_folium import st_folium
 import streamlit as st
 from geopy.geocoders import Nominatim
 from countryinfo import CountryInfo
+import pandas as pd
 
 
 st.set_page_config(layout="wide")
@@ -12,15 +13,6 @@ def get_pos(lat, lng):
 
 
 m = folium.Map(location=[47.7749, 14.4194], zoom_start=3)
-
-
-
-
-
-
-
-#m.add_child(folium.Popup("test"))
-
 
 map = st_folium(m, height=1000, width=3000)
 
@@ -77,17 +69,13 @@ def gatherinfo(country):
     #returnlist.append(country.alt_spellings())
     return returnlist
 
-
-
-#folium.Marker(
-#    location=[data[0], data[1]],
-#    popup="test",
-#    icon=folium.Icon(color="blue"),
-#).add_to(m)
-
-
 if data is not None:
     st.write(data) # Writes to the app
     #print(data) # Writes to terminal
     print(country)
     print(gatherinfo(country))
+
+while True:
+    popupText = folium.Popup("You are here..")
+    popup = folium.Marker(location=[data['lat'], data['lng']],popup=popupText,)
+    m.add_to(popup)
